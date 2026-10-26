@@ -1,16 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!-- This line links your CSS to your HTML -->
-    <link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>developer profile</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@100..900&family=Metamorphous&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      margin:0;
+      background-color: rgb(24, 23, 23);
+      color:#fff;
+      font-family: 'Encode Sans Semi Expanded', sans-serif;
+    }
+
+    /* top menu bar */
+    .nav{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      padding:14px 24px;
+      background:#8b8b8c;
+      border-bottom:1px solid #2a2a30;
+    }
+    .nav a{
+      padding:8px 18px;
+      border-radius:999px;
+      text-decoration:none;
+      color:#cecfd2;
+      font-weight:600;
+      cursor:pointer;
+    }
+    .nav a:hover{ color:#fff; }
+    .nav a.active{ background:#232324; color:#ffffff; }
+
+    /* only the active page's section shows */
+    .page{ display:none; }
+    .page.active{ display:block; }
+
+    .lennon{
+      font-family: 'Metamorphous', serif;
+      text-align: center;
+      font-size: 48px;
+      color: #fff;
+    }
+    .software{
+      font-family: 'Encode Sans Semi Expanded', sans-serif;
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+    }
+    .avatar{
+      width: 120px;
+      height: 120px;        /* same as width — must be square */
+      border-radius: 50%;   /* turns the square into a circle */
+      object-fit: cover;    /* crops to fill instead of squishing */
+    }
+    .my-custom-class {
+      color: #fff;
+      text-align: center;
+    }
+    .kepler{
+      : left;
+    }
+  </style>
 </head>
 
-<body style="font-family: 'Oswald', sans-serif; 
-background-color: #93c1e7;">
-  <h1 style="text-align: center;">My First CSS Example</h1>
+<body>
+
+  <nav class="nav">
+    <a data-page="home" class="active">home</a>
+    <a data-page="contact">Contact</a>
+    <a data-page="blog">blog</a>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home" class="page active">
+    <div style="text-align:center">
+      <br>
+      <span class="lennon">Lennon Helman</span>
+      <br><br>
+      <span class="software">software developer, Greencastle Pa</span>
+      <br><br><br>
+      <img class="avatar" src="logo.png" alt="Lennon Helman">
+      <br><br>
+      <h2 class="my-custom-class">projects</h2>
+      <br><br>
+ <div style="display: flex; justify-content: center; gap: 14px;">
+  <a href="https://github.com/lenodrips-create/kepler">
+    <img src="Kepler.png" alt="Kepler" style="width: 48%; height: 120px; object-fit: contain;">
+  </a>
+  <a href="https://github.com/lenodrips-create/kepler-linux">
+    <img src="linux.png" alt="Linux" style="width: 48%; height: 120px; object-fit: contain;">
+  </a>
+</div>
+    </div>
+   
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="page">
+    <div style="text-align:center">
+      <br><br><br><br>
+   <form class="email-box" onsubmit="return subscribe(event)">
+        <input type="email" id="emailInput" placeholder="s@gmail.com" required>
+        <button type="submit">Notify me</button>
+      </form>
+      <p class="email-note" id="emailNote">make a project request here.</p>
+      <br>
+      
+    </div>
+  </section>
+
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="page">
+    <div style="text-align:center">
+      <br>
+      <h1>blog</h1>
+      <p>hello, i am Lennon Helman. I am a 14 year old software developer. my main goal is to provide my community and others with useful content and resources for projects they may have in mind or may need. <p></p>I offer tutorials, code examples, and insights into the world of software development. i also provide custom webiste making and other services</p>
+    </div>
+  </section>
+
+  <script>
+    const links = document.querySelectorAll(".nav a");
+    const pages = document.querySelectorAll(".page");
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        const target = link.dataset.page;
+        // highlight the clicked link
+        links.forEach(l => l.classList.toggle("active", l === link));
+        // show only the matching section
+        pages.forEach(p => p.classList.toggle("active", p.id === target));
+      });
+    });
+  </script>
+
 </body>
 </html>
